@@ -47,9 +47,15 @@
         <input type="text" placeholder="Nuevo Gasto...">
     </dialog>
     <dialog class="menuIngreso">
-        <input type="text" placeholder="Nuevo Ingreso...">
-        <button class="cerrar"></button>
-        <button class="guardar"></button>
+        <div>
+            <input class="nombre" type="text" placeholder="Nuevo Ingreso...">
+            <input class="cantidad" type="text" placeholder="Cantidad...">
+        </div>
+        <div>
+            <button class="cerrar">Cerrar</button>
+            <button class="guardar">Guardar</button>
+        </div>
+        <p class="hide">Error. Vuelva a itentarlo</p>
     </dialog>
 
     <script src="function.js"></script>

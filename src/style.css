@@ -126,25 +126,30 @@ section {
 }
 /*---------------------------------------------------*/
 
+.menuIngreso {
+    width: 40cap;
+    height: 40cap;
+}
 
-/*-------------------------------- Cuadros ingresos -------------------------------------------*/
+.menuIngreso input{
+    width: 99%;
+    height: 10cap;
+}
 
+.menuIngreso button{
+    width: 20cap;
+    height: 10cap;
+}
 
+.menuIngreso .view {
+    border: 1px solid red;
+    background-color: rgb(255, 170, 170);
+    color: red;
+    border-radius: 10px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.menuIngreso .hide{
+    display: none;
+}
 
 
