@@ -1,7 +1,7 @@
-const nuevaEtiquetaGasto = (elemento) => {
+const nuevaEtiquetaGasto = (nombre, cantidad) => {
     const lista = document.querySelector(".listaTotal");
     const nuevoElemento = document.createElement("li");
-    nuevoElemento.textContent = "Nuevo Gasto";
+    nuevoElemento.innerHTML = `<li class="EGasto"><span class="nombreElemento">${nombre}</span><span class="cantElemento">${cantidad}</span></li>`;
 
     if(lista){
         lista.appendChild(nuevoElemento);
@@ -24,7 +24,7 @@ const nuevaEtiquetaIngreso = (nombre, cantidad) => {
 const listenner = (event) => {
     switch (event.target.className){
         case "BGasto":
-            nuevaEtiquetaGasto(event);
+            overlGasto.showModal();
             break;
         case "BIngreso":
             overlIngreso.showModal();
@@ -33,8 +33,7 @@ const listenner = (event) => {
 };
 
 const nuevoIG = () => {
-    const lista = document.querySelector(".listaGastos .opcB");
-    lista.addEventListener("click", listenner);
+
 };
 
 const ingresosTotales = ()  =>{
@@ -83,11 +82,50 @@ const menuNuevoIngreso = (overl) => {
             }
         }
     }
-    
-
-
 };
 
+
+const menuNuevoGasto = (overl) => {
+    const ECantidad = overl.querySelector(".cantidad");
+    const ENombre = overl.querySelector(".nombre");
+    const msnError = overl.querySelector("p");
+    const cantidad = Number(ECantidad.value);
+    const nombre = ENombre.value;
+    
+
+    if(cantidad != "" && !Number.isNaN(cantidad)){
+        nuevaEtiquetaGasto(nombre, cantidad);
+        if(msnError){
+            if(msnError.classList.contains("view")){
+                msnError.classList.toggle("view");
+                msnError.classList.toggle("hide");
+            }
+        }
+        ECantidad.value = "";
+        ENombre.value = "";
+        overl.close();
+    }
+    else{
+        if(msnError){
+            if (msnError.classList.contains("hide")){
+                msnError.classList.toggle("hide");
+                msnError.classList.toggle("view");
+            }
+        }
+    } 
+};
+
+const guardarOverl = (overl) => {
+    const nombreclase = overl.className;
+    switch (nombreclase) {
+        case "menuGasto":
+            menuNuevoGasto(overl);
+            break;
+        case "menuIngreso":
+            menuNuevoIngreso(overl);
+            break;
+    }
+};
 
 const overlListener = (overl) => {
 
@@ -98,7 +136,7 @@ const overlListener = (overl) => {
                 overl.close();
                 break;
             case "guardar":
-                menuNuevoIngreso(overl);
+                guardarOverl(overl);
                 break;
         };
     });
@@ -109,12 +147,15 @@ const overlListener = (overl) => {
 
 
 
+const lista = document.querySelector(".listaGastos .opcB");
 const overlIngreso = document.querySelector(".menuIngreso");
+const overlGasto = document.querySelector(".menuGasto");
 
-overlListener(overlIngreso);
 gastosTotales();
 ingresosTotales();
-nuevoIG();
+overlListener(overlIngreso);
+overlListener(overlGasto);
+lista.addEventListener("click", listenner);
 
 
 

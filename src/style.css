@@ -152,4 +152,33 @@ section {
     display: none;
 }
 
+.menuGasto {
+    width: 40cap;
+    height: 40cap;
+}
+
+.menuGasto input{
+    width: 99%;
+    height: 10cap;
+}
+
+.menuGasto button{
+    width: 20cap;
+    height: 10cap;
+}
+
+.menuGasto.view {
+    border: 1px solid red;
+    background-color: rgb(255, 170, 170);
+    color: red;
+    border-radius: 10px;
+}
+
+.menuGasto .hide{
+    display: none;
+}
+
+
+
+
 
