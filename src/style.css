@@ -152,6 +152,12 @@ section {
     display: none;
 }
 
+.menuIngreso .catCompras {
+    width: 50%;
+    height: 15%;
+    font-size: larger;
+}
+
 .menuGasto {
     width: 40cap;
     height: 40cap;
@@ -178,7 +184,11 @@ section {
     display: none;
 }
 
-
+.menuGasto .catCompras {
+    width: 50%;
+    height: 10%;
+    font-size: larger;
+}
 
 
 

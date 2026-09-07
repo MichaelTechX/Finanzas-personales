@@ -32,10 +32,6 @@ const listenner = (event) => {
     };
 };
 
-const nuevoIG = () => {
-
-};
-
 const ingresosTotales = ()  =>{
     var cantT = 0;
     document.querySelectorAll(".listaGastos .EIngreso").forEach(elemento => {
@@ -83,7 +79,6 @@ const menuNuevoIngreso = (overl) => {
         }
     }
 };
-
 
 const menuNuevoGasto = (overl) => {
     const ECantidad = overl.querySelector(".cantidad");
@@ -137,7 +132,7 @@ const overlListener = (overl) => {
                 break;
             case "guardar":
                 guardarOverl(overl);
-                break;
+                break;  
         };
     });
 

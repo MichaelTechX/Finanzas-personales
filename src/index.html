@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="grafico.css">
 
     <title>Finanzas Personales</title>
 </head>
@@ -30,27 +31,36 @@
     <section class="listaGastos">
         <div class="opcB"><button class="BGasto">Gasto</button><button class="BIngreso">Ingreso</button></div>
         <ul class="listaTotal">
-            <li class="EIngreso"><span class="nombreElemento">Primer gastos</span><span class="cantElemento">12000</span></li>
-            <li class="EGasto"><span class="nombreElemento">Primer gastos</span><span class="cantElemento">12000</span></li>
-            <li class="EGasto"><span class="nombreElemento">Primer gastos</span><span class="cantElemento">12000</span></li>
-            <li class="EIngreso"><span class="nombreElemento">Primer gastos</span><span class="cantElemento">12000</span></li>
-            <li class="EGasto"><span class="nombreElemento">Primer gastos</span><span class="cantElemento">12000</span></li>
-        </ul>
+            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cantElemento">12000</span></li>
+            <li class="EGasto" data-categoria="comida"><span class="nombreElemento">McDonald</span><span class="cantElemento">12000</span></li>
+            <li class="EGasto" data-categoria="ropa"><span class="nombreElemento">Campera de cuero</span><span class="cantElemento">12000</span></li>
+            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cantElemento">12000</span></li>
+            <li class="EGasto" data-categoria="entretenimiento"><span class="nombreElemento">Juego</span><span class="cantElemento">12000</span></li>
+        </ul> 
     </section>
 
 
     <section class="categorias">
-        Cuadricula
+        <canvas id="miGrafico" width="500" height="500"></canvas>
+        <ul class="listaCategorias">
+
+        </ul>
     </section>
 
-    <dialog class="menuGastos">
-        <input type="text" placeholder="Nuevo Gasto...">
-    </dialog>
+
     <dialog class="menuIngreso">
         <div>
             <input class="nombre" type="text" placeholder="Nuevo Ingreso...">
             <input class="cantidad" type="text" placeholder="Cantidad...">
         </div>
+        <select class="catCompras">
+            <option value="ropa">Ropa</option>
+            <option value="comida">Comida</option>
+            <option value="entretenimiento">Entretenimiento</option>
+            <option value="medicina">Medicina</option>
+            <option value="varios">Varios</option>
+
+        </select>        
         <div>
             <button class="cerrar">Cerrar</button>
             <button class="guardar">Guardar</button>
@@ -59,16 +69,28 @@
     </dialog>
     <dialog class="menuGasto">
         <div>
-            <input class="nombre" type="text" placeholder="Nuevo Ingreso...">
+            <input class="nombre" type="text" placeholder="Nuevo Gasto...">
             <input class="cantidad" type="text" placeholder="Cantidad...">
         </div>
+        <select class="catCompras">
+            <option value="ropa">Ropa</option>
+            <option value="comida">Comida</option>
+            <option value="entretenimiento">Entretenimiento</option>
+            <option value="medicina">medicina</option>
+            <option value="varios">Varios</option>
+
+        </select>
         <div>
             <button class="cerrar">Cerrar</button>
             <button class="guardar">Guardar</button>
         </div>
+
         <p class="hide">Error. Vuelva a itentarlo</p>
     </dialog>
 
     <script src="function.js"></script>
+    <script src="grafico.js"></script>
+    
+</script>
 </body>
 </html>
