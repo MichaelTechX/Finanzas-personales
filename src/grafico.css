@@ -3,11 +3,25 @@
 .categorias .listaCategorias {
     list-style: none;
 }
-.categorias .listaCategorias li::before{
+
+.categorias {
+    display: flex;
+    flex-direction: column;
+}
+
+.categorias #miGrafico {
+    flex: 1;
+}
+.categorias .listaCategorias {
+    flex: 1;
+}
+
+
+.categorias .listaCategorias li{
     content: "";
-    display: inline-block;
     width: 15px;
     height: 15px;
+    border-radius: 50%;
     margin-right: 8px;
 }
 

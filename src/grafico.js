@@ -41,33 +41,38 @@ ctx.scale(-1, -1);
 
 
 
-
+const elementoCategoria = document.querySelector(".categorias .listaCategorias");
 let radActual = 0;
 let radMod = 0;
 for (let i = 0; i < categoriasLista.length; i++) {
     let elem = categoriasLista[i];
     let porcentaje = categorias[elem]/cantLista;
-
     if(elem in categorias){
+        const nuevoElemento = document.createElement("li");
+        nuevoElemento.innerHTML = `<li>${elem}</li>`;
+        
         radMod = radActual + Math.PI * 2 * porcentaje;
+        const color = colorAleatorio();
         // Círculo
         ctx.beginPath();
-        ctx.moveTo(260, 200);
-        ctx.arc(260, 200, 180, radActual, radMod, false);
+        ctx.moveTo(240, 260);
+        ctx.arc(240, 260, 180, radActual, radMod, false);
         ctx.closePath();
-        ctx.fillStyle = colorAleatorio();
+        ctx.fillStyle = color;
         ctx.fill();
         radActual = radMod;
+        elementoCategoria.appendChild(nuevoElemento);
+
     }
-    
 };
+
 
 
 
 
 // Circulo blanco para dona
 ctx.beginPath();
-ctx.arc(260, 200, 100, 0, Math.PI * 2);
+ctx.arc(240, 260, 100, 0, Math.PI * 2);
 ctx.fillStyle = "white";
 ctx.fill();
 ctx.stroke();
