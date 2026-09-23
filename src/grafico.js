@@ -1,12 +1,3 @@
-const listaElemts = document.querySelectorAll(".listaTotal li");
-const cantLista = listaElemts.length;
-let categoriasLista = [];
-
-const categorias = {}
-
-const listaCartegorias = document.querySelector(".categorias .listaCategorias");
-
-
 
 const colorAleatorio = () => {
     const r = Math.floor(Math.random() * 256);
@@ -15,67 +6,101 @@ const colorAleatorio = () => {
 
     return `rgb(${r}, ${g}, ${b})`;
 };
+const contarCate = (lista, cate, categorias) => {
+    for (let i = 0; i < lista.length; i++){
+        if (lista[i].dataset.categoria in cate){
+            cate[lista[i].dataset.categoria] += 1;
+        }
+        else{
+            cate[lista[i].dataset.categoria] = 1;
+            categorias.push(lista[i].dataset.categoria);
+        }
+    };
+};
 
+const realizarGrafico = (canvas) => {
+    const lista = document.querySelectorAll(".listaTotal li");
+    let listCat = [];
+    const categorias = {};
+    const cantLista = lista.length;
 
+    contarCate(lista, categorias, listCat);
 
-for (let i = 0; i < listaElemts.length; i++){
+    const ctx = canvas.getContext("2d");
 
-    if (listaElemts[i].dataset.categoria in categorias){
-        categorias[listaElemts[i].dataset.categoria] += 1;
+    ctx.translate(canvas.width, canvas.height);
+    ctx.scale(-1, -1);
+
+    console.log(categorias);
+
+    let radActual = 0;
+    let radMod = 0;
+    for (let i = 0; i < listCat.length; i++) {
+        
+        let elem = listCat[i];
+        let porcentaje = categorias[elem]/cantLista;
+        if(elem in categorias){
+            
+            radMod = radActual + Math.PI * 2 * porcentaje;
+            const color = colorAleatorio();
+            // Círculo
+            ctx.beginPath();
+            ctx.moveTo(240, 260);
+            ctx.arc(240, 260, 180, radActual, radMod, false);
+            ctx.closePath();
+            ctx.fillStyle = color;
+            ctx.fill();
+            radActual = radMod;
+
+        }
+    }
+    
+
+};
+
+const graficar3 = () => {
+
+    let canva = document.querySelector("#miGrafico");
+    let sectCat = document.querySelector(".categorias");
+    if(canva){
+        console.log("Existe");
+        canva.remove();
+        canva = document.createElement("canvas");
+        canva.className = "nuevoCanva";
+        canva.id = "miGrafico";
+        canva.width = 500;
+        canva.height = 500;
+        sectCat.appendChild(canva);
+        realizarGrafico(canva);
     }
     else{
-        categorias[listaElemts[i].dataset.categoria] = 1;
-        categoriasLista.push(listaElemts[i].dataset.categoria);
+        canva = document.createElement("canvas");
+        canva.className = "nuevoCanva";
+        canva.id = "miGrafico";
+        canva.width = 500;
+        canva.height = 500;
+        sectCat.appendChild(canva);
+        realizarGrafico(canva);
     }
+
+
+
 };
 
 
 
 
 
-const canvas = document.querySelector("#miGrafico");
-const ctx = canvas.getContext("2d");
-
-ctx.translate(canvas.width, canvas.height);
-ctx.scale(-1, -1);
-
-
-
-const elementoCategoria = document.querySelector(".categorias .listaCategorias");
-let radActual = 0;
-let radMod = 0;
-for (let i = 0; i < categoriasLista.length; i++) {
-    let elem = categoriasLista[i];
-    let porcentaje = categorias[elem]/cantLista;
-    if(elem in categorias){
-        const nuevoElemento = document.createElement("li");
-        nuevoElemento.innerHTML = `<li>${elem}</li>`;
-        
-        radMod = radActual + Math.PI * 2 * porcentaje;
-        const color = colorAleatorio();
-        // Círculo
-        ctx.beginPath();
-        ctx.moveTo(240, 260);
-        ctx.arc(240, 260, 180, radActual, radMod, false);
-        ctx.closePath();
-        ctx.fillStyle = color;
-        ctx.fill();
-        radActual = radMod;
-        elementoCategoria.appendChild(nuevoElemento);
-
-    }
+export const actualizarGrafica = () => {
+    graficar3();
 };
 
 
 
 
 
-// Circulo blanco para dona
-ctx.beginPath();
-ctx.arc(240, 260, 100, 0, Math.PI * 2);
-ctx.fillStyle = "white";
-ctx.fill();
-ctx.stroke();
+
+
 
 
 

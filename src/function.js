@@ -1,24 +1,41 @@
-const nuevaEtiquetaGasto = (nombre, cantidad) => {
+import {actualizarGrafica} from "./grafico.js";
+
+
+const nuevaEtiquetaGasto = (nombre, cantidad, nomCat) => {
+
     const lista = document.querySelector(".listaTotal");
     const nuevoElemento = document.createElement("li");
-    nuevoElemento.innerHTML = `<li class="EGasto"><span class="nombreElemento">${nombre}</span><span class="cantElemento">${cantidad}</span></li>`;
+    nuevoElemento.className = "EGasto";
+    nuevoElemento.dataset.categoria = nomCat;
+
+    nuevoElemento.innerHTML = `<span class="nombreElemento">${nombre}</span>
+                                <span class="cantElemento">${cantidad}</span>`;
 
     if(lista){
         lista.appendChild(nuevoElemento);
         gastosTotales();
+        actualizarGrafica();
     }
+    
 
 };
 
-const nuevaEtiquetaIngreso = (nombre, cantidad) => {
+const nuevaEtiquetaIngreso = (nombre, cantidad, nomCat) => {
     const lista = document.querySelector(".listaTotal");
     const nuevoElemento = document.createElement("li");
-    nuevoElemento.innerHTML = `<li class="EIngreso"><span class="nombreElemento">${nombre}</span><span class="cantElemento">${cantidad}</span></li>`;
+    nuevoElemento.className = "EIngreso";
+    nuevoElemento.dataset.categoria = nomCat;
+
+    nuevoElemento.innerHTML = `<span class="nombreElemento">${nombre}</span>
+                                <span class="cantElemento">${cantidad}</span>`
+                            ;
 
     if(lista){
         lista.appendChild(nuevoElemento);
         ingresosTotales();
+        actualizarGrafica();
     }
+    
 };
 
 const listenner = (event) => {
@@ -54,12 +71,13 @@ const menuNuevoIngreso = (overl) => {
     const ECantidad = overl.querySelector(".cantidad");
     const ENombre = overl.querySelector(".nombre");
     const msnError = overl.querySelector("p");
+    const categoria = overl.querySelector(".catCompras");
     const cantidad = Number(ECantidad.value);
     const nombre = ENombre.value;
-    
+    const nomCat = categoria.value;
 
     if(cantidad != "" && !Number.isNaN(cantidad)){
-        nuevaEtiquetaIngreso(nombre, cantidad);
+        nuevaEtiquetaIngreso(nombre, cantidad, nomCat);
         if(msnError){
             if(msnError.classList.contains("view")){
                 msnError.classList.toggle("view");
@@ -83,13 +101,15 @@ const menuNuevoIngreso = (overl) => {
 const menuNuevoGasto = (overl) => {
     const ECantidad = overl.querySelector(".cantidad");
     const ENombre = overl.querySelector(".nombre");
+    const categoria = overl.querySelector(".catCompras");
     const msnError = overl.querySelector("p");
     const cantidad = Number(ECantidad.value);
     const nombre = ENombre.value;
+    const nomCat = categoria.value;
     
 
     if(cantidad != "" && !Number.isNaN(cantidad)){
-        nuevaEtiquetaGasto(nombre, cantidad);
+        nuevaEtiquetaGasto(nombre, cantidad, nomCat);
         if(msnError){
             if(msnError.classList.contains("view")){
                 msnError.classList.toggle("view");
@@ -146,12 +166,13 @@ const lista = document.querySelector(".listaGastos .opcB");
 const overlIngreso = document.querySelector(".menuIngreso");
 const overlGasto = document.querySelector(".menuGasto");
 
+
+actualizarGrafica();
 gastosTotales();
 ingresosTotales();
 overlListener(overlIngreso);
 overlListener(overlGasto);
 lista.addEventListener("click", listenner);
-
 
 
 

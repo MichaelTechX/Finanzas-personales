@@ -9,12 +9,6 @@
     flex-direction: column;
 }
 
-.categorias #miGrafico {
-    flex: 1;
-}
-.categorias .listaCategorias {
-    flex: 1;
-}
 
 
 .categorias .listaCategorias li{
