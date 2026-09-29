@@ -13,16 +13,16 @@
 <body>
 
     <section class="opciones">
-        <button>op 1</button>
-        <button>op 1</button>
-        <button>op 1</button>
-        <button>op 1</button>
+        <button onclick="window.location.href='./index.html'">Dona</button>
+        <button onclick="window.location.href='./categorias/categorias.html'">Categorias</button>
+        <button onclick="window.location.href='./tiempo/tiempo.html'">Tiempo</button>
+        <button>Opciones</button>
     </section>
 
     <Section class="titulo">
         <h1>Finanzas Personales</h1>
     </Section>
-
+    
     <section class="datosTotales">
         <div class="DIngresos"><h3 class="nombreElemento">Ingresos Totales</h3><p class="cantTotal">$$$</p></div>
         <div class="DGastos"><h3 class="nombreElemento">Gastos Totales</h3><p class="cantTotal">$$$</p></div>
@@ -31,19 +31,16 @@
     <section class="listaGastos">
         <div class="opcB"><button class="BGasto">Gasto</button><button class="BIngreso">Ingreso</button></div>
         <ul class="listaTotal">
-            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cantElemento">12000</span></li>
-            <li class="EGasto" data-categoria="comida"><span class="nombreElemento">McDonald</span><span class="cantElemento">12000</span></li>
-            <li class="EGasto" data-categoria="ropa"><span class="nombreElemento">Campera de cuero</span><span class="cantElemento">12000</span></li>
-            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cantElemento">12000</span></li>
-            <li class="EGasto" data-categoria="entretenimiento"><span class="nombreElemento">Juego</span><span class="cantElemento">12000</span></li>
+            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cateElemento">Ingreso</span><span class="cantElemento">12000</span></li>
+            <li class="EGasto" data-categoria="comida"><span class="nombreElemento">McDonald</span><span class="cateElemento">Comida</span><span class="cantElemento">12000</span></li>
+            <li class="EGasto" data-categoria="ropa"><span class="nombreElemento">Campera de cuero</span><span class="cateElemento">Ropa</span><span class="cantElemento">12000</span></li>
+            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cateElemento">Cobro</span><span class="cantElemento">12000</span></li>
+            <li class="EGasto" data-categoria="entretenimiento"><span class="nombreElemento">Juego</span><span  class="cateElemento">Entretenimiento</span><span class="cantElemento">12000</span></li>
         </ul> 
     </section>
 
 
-    <section class="categorias">
-        <!-- <canvas id="miGrafico" width="500" height="500"></canvas> -->
-        <!-- <p class="cantDifTotal">$$$</p> -->
-
+    <section class="categorias"> <!--No se debe quitar-->
     </section>
 
 
@@ -89,7 +86,6 @@
 
     <script type="module" src="function.js"></script>
     
-    
-</script>
+
 </body>
 </html>

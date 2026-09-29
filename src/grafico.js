@@ -58,7 +58,7 @@ const realizarGrafico = (canvas) => {
 
 };
 
-const graficar3 = () => {
+const graficarDona = () => {
 
     let canva = document.querySelector("#miGrafico");
     let sectCat = document.querySelector(".categorias");
@@ -92,7 +92,7 @@ const graficar3 = () => {
 
 
 export const actualizarGrafica = () => {
-    graficar3();
+    graficarDona();
 };
 
 

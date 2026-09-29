@@ -1,0 +1,57 @@
+html, body {
+    width: 100%;
+    height: 100%;
+
+}
+
+body{
+    display: grid;
+    grid-template-columns: 6% 62% 32%;
+    grid-template-rows: 15% 30% 50%;
+    margin: 0;
+}
+
+
+/*-------------------------------- Secciones -------------------------------------------*/
+
+
+section {
+    border: 5px solid black;
+}
+
+/*---------------------------------------------------*/
+.opciones{
+    grid-row: 2/-1;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.opciones button{
+    margin: 15%;
+    padding: 20%;
+    background: none;
+    border: 1% solid black;
+    border-radius: 10px;
+}
+
+/*---------------------------------------------------*/
+
+/*---------------------------------------------------*/
+.titulo {
+    grid-row: 1;
+    grid-column: 1/-1;
+    background-color: black;
+}
+
+.titulo h1 {
+    margin-left: 2%;
+    margin-top: 2.3%;
+    color: white;
+}
+
+/*---------------------------------------------------*/
+
+
+

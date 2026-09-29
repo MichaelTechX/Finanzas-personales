@@ -9,7 +9,8 @@ const nuevaEtiquetaGasto = (nombre, cantidad, nomCat) => {
     nuevoElemento.dataset.categoria = nomCat;
 
     nuevoElemento.innerHTML = `<span class="nombreElemento">${nombre}</span>
-                                <span class="cantElemento">${cantidad}</span>`;
+                                <span class="cateElemento">${nomCat}</span>
+                                <span class="cantElemento">$ ${cantidad}</span>`;
 
     if(lista){
         lista.appendChild(nuevoElemento);
@@ -27,6 +28,7 @@ const nuevaEtiquetaIngreso = (nombre, cantidad, nomCat) => {
     nuevoElemento.dataset.categoria = nomCat;
 
     nuevoElemento.innerHTML = `<span class="nombreElemento">${nombre}</span>
+                                <span class="cateElemento">${nomCat}</span>
                                 <span class="cantElemento">${cantidad}</span>`
                             ;
 
