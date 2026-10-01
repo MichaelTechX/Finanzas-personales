@@ -1,5 +1,232 @@
 import {actualizarGrafica} from "./grafico.js";
 
+/*Estructura de objetos de gastose ingresos */
+
+
+
+const coloresCat = {
+    compras: "red",
+    entretenimieto: "blue",
+    hogar: "yellow",
+    consumo: "orange",
+    transporte: "purple",
+    educacion: "lightblue",
+    salud: "green",
+    viajes: "cian",
+    varios: "grey",
+};
+
+const Gastos = {
+    lista: [
+        {
+            nombre: "Supermercado",
+            categoria: "Comida",
+            cantidad: 25000,
+            fecha: {
+                dia: 3,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Cine",
+            categoria: "Entretenimiento",
+            cantidad: 8500,
+            fecha: {
+                dia: 5,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Combustible",
+            categoria: "Transporte",
+            cantidad: 18000,
+            fecha: {
+                dia: 7,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Internet",
+            categoria: "Servicios",
+            cantidad: 12000,
+            fecha: {
+                dia: 10,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Zapatillas",
+            categoria: "Ropa",
+            cantidad: 45000,
+            fecha: {
+                dia: 12,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Almuerzo",
+            categoria: "Comida",
+            cantidad: 7500,
+            fecha: {
+                dia: 15,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Libro de programación",
+            categoria: "Educación",
+            cantidad: 16000,
+            fecha: {
+                dia: 18,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Electricidad",
+            categoria: "Servicios",
+            cantidad: 22000,
+            fecha: {
+                dia: 21,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Videojuego",
+            categoria: "Entretenimiento",
+            cantidad: 30000,
+            fecha: {
+                dia: 24,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Reparación de bicicleta",
+            categoria: "Mantenimiento",
+            cantidad: 27000,
+            fecha: {
+                dia: 28,
+                mes: 9,
+                anio: 2026
+            }
+        }
+    ]
+    total: 0,
+};
+
+const Ingresos = {
+    lista: [
+        {
+            nombre: "Sueldo",
+            categoria: "Trabajo",
+            cantidad: 850000,
+            fecha: {
+                dia: 1,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Trabajo freelance",
+            categoria: "Trabajo",
+            cantidad: 120000,
+            fecha: {
+                dia: 4,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Venta de videojuego",
+            categoria: "Ventas",
+            cantidad: 45000,
+            fecha: {
+                dia: 6,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Venta de libro usado",
+            categoria: "Ventas",
+            cantidad: 18000,
+            fecha: {
+                dia: 9,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Proyecto freelance",
+            categoria: "Trabajo",
+            cantidad: 95000,
+            fecha: {
+                dia: 13,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Reembolso",
+            categoria: "Reembolso",
+            cantidad: 12500,
+            fecha: {
+                dia: 16,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Venta de componente PC",
+            categoria: "Ventas",
+            cantidad: 35000,
+            fecha: {
+                dia: 19,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Trabajo temporal",
+            categoria: "Trabajo",
+            cantidad: 70000,
+            fecha: {
+                dia: 22,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Premio de concurso",
+            categoria: "Premios",
+            cantidad: 50000,
+            fecha: {
+                dia: 25,
+                mes: 9,
+                anio: 2026
+            }
+        },
+        {
+            nombre: "Venta de accesorio",
+            categoria: "Ventas",
+            cantidad: 22000,
+            fecha: {
+                dia: 29,
+                mes: 9,
+                anio: 2026
+            }
+        }
+    ]
+    total: 0,
+};
 
 const nuevaEtiquetaGasto = (nombre, cantidad, nomCat) => {
 
@@ -52,12 +279,14 @@ const listenner = (event) => {
 };
 
 const ingresosTotales = ()  =>{
+    Ingresos.lista.forEach(elem => {Ingresos.total += elem.cantidad});
+    /*
     var cantT = 0;
     document.querySelectorAll(".listaGastos .EIngreso").forEach(elemento => {
         var cantActual = Number(elemento.querySelector(".cantElemento").textContent);
         cantT += cantActual;
-    }); 
-    document.querySelector(".DIngresos .cantTotal").textContent = cantT;
+    }); */
+    document.querySelector(".DIngresos .cantTotal").textContent = Ingresos.total; /*cantT;*/
 };
 
 const gastosTotales = ()  =>{
@@ -160,6 +389,8 @@ const overlListener = (overl) => {
 
 
 };
+
+
 
 
 
