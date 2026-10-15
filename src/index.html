@@ -22,7 +22,7 @@
     <Section class="titulo">
         <h1>Finanzas Personales</h1>
     </Section>
-    
+
     <section class="datosTotales">
         <div class="DIngresos"><h3 class="nombreElemento">Ingresos Totales</h3><p class="cantTotal">$$$</p></div>
         <div class="DGastos"><h3 class="nombreElemento">Gastos Totales</h3><p class="cantTotal">$$$</p></div>
@@ -31,11 +31,12 @@
     <section class="listaGastos">
         <div class="opcB"><button class="BGasto">Gasto</button><button class="BIngreso">Ingreso</button></div>
         <ul class="listaTotal">
-            <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cateElemento">Ingreso</span><span class="cantElemento">12000</span></li>
+        <!--<li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cateElemento">Ingreso</span><span class="cantElemento">12000</span></li>
             <li class="EGasto" data-categoria="comida"><span class="nombreElemento">McDonald</span><span class="cateElemento">Comida</span><span class="cantElemento">12000</span></li>
             <li class="EGasto" data-categoria="ropa"><span class="nombreElemento">Campera de cuero</span><span class="cateElemento">Ropa</span><span class="cantElemento">12000</span></li>
             <li class="EIngreso" data-categoria="trabajo"><span class="nombreElemento">Cobro</span><span class="cateElemento">Cobro</span><span class="cantElemento">12000</span></li>
             <li class="EGasto" data-categoria="entretenimiento"><span class="nombreElemento">Juego</span><span  class="cateElemento">Entretenimiento</span><span class="cantElemento">12000</span></li>
+        -->
         </ul> 
     </section>
 
@@ -49,14 +50,15 @@
             <input class="nombre" type="text" placeholder="Nuevo Ingreso...">
             <input class="cantidad" type="text" placeholder="Cantidad...">
         </div>
-        <select class="catCompras">
-            <option value="ropa">Ropa</option>
-            <option value="comida">Comida</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="medicina">Medicina</option>
-            <option value="varios">Varios</option>
+            <select class="catCompras">
+                <option value="ropa">Ropa</option>
+                <option value="comida">Comida</option>
+                <option value="entretenimiento">Entretenimiento</option>
+                <option value="medicina">Medicina</option>
+                <option value="varios">Varios</option>
 
-        </select>        
+            </select>
+            <input type="date" class="fecha">
         <div>
             <button class="cerrar">Cerrar</button>
             <button class="guardar">Guardar</button>
@@ -64,18 +66,19 @@
         <p class="hide">Error. Vuelva a itentarlo</p>
     </dialog>
     <dialog class="menuGasto">
-        <div>
+        <div>  
             <input class="nombre" type="text" placeholder="Nuevo Gasto...">
             <input class="cantidad" type="text" placeholder="Cantidad...">
         </div>
-        <select class="catCompras">
-            <option value="ropa">Ropa</option>
-            <option value="comida">Comida</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="medicina">medicina</option>
-            <option value="varios">Varios</option>
+            <select class="catCompras">
+                <option value="ropa">Ropa</option>
+                <option value="comida">Comida</option>
+                <option value="entretenimiento">Entretenimiento</option>
+                <option value="medicina">medicina</option>
+                <option value="varios">Varios</option>
 
-        </select>
+            </select>  
+            <input type="date" class="fecha">        
         <div>
             <button class="cerrar">Cerrar</button>
             <button class="guardar">Guardar</button>

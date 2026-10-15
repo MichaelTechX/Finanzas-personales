@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finanzas Personales</title>
+
     <link rel="stylesheet" href="categorias.css">
+    <script src=""></script>
+    <title>Finanzas Personales</title>
+
+    
 </head>
 <body>
     <section class="opciones"> 
@@ -13,11 +17,25 @@
         <button onclick="window.location.href='../tiempo/tiempo.html'">Tiempo</button>
         <button>Opciones</button>
     </section>
-        <Section class="titulo">
+
+    <Section class="titulo">
         <h1>Finanzas Personales</h1>
     </Section>
+    
+    <section class="categorias">
+        <canvas class="grafica" ></canvas>
+
+    </section>
+
+    <section class="tiempo">
+        <canvas class="grafica"></canvas>
+
+    </section>
 
 
+    <script type="module" src="categorias.js"></script>
+    <script type="module" src="tiempo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
 

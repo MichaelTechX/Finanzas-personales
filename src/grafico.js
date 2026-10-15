@@ -1,3 +1,5 @@
+import {coloresCat} from "./hobjs.js";
+
 
 const colorAleatorio = () => {
     const r = Math.floor(Math.random() * 256);
@@ -31,7 +33,6 @@ const realizarGrafico = (canvas) => {
     ctx.translate(canvas.width, canvas.height);
     ctx.scale(-1, -1);
 
-    console.log(categorias);
 
     let radActual = 0;
     let radMod = 0;
@@ -42,7 +43,7 @@ const realizarGrafico = (canvas) => {
         if(elem in categorias){
             
             radMod = radActual + Math.PI * 2 * porcentaje;
-            const color = colorAleatorio();
+            const color = coloresCat[elem.toLowerCase()];/*colorAleatorio();*/
             // Círculo
             ctx.beginPath();
             ctx.moveTo(240, 260);
@@ -63,7 +64,7 @@ const graficarDona = () => {
     let canva = document.querySelector("#miGrafico");
     let sectCat = document.querySelector(".categorias");
     if(canva){
-        console.log("Existe");
+        
         canva.remove();
         canva = document.createElement("canvas");
         canva.className = "nuevoCanva";
