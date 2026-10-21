@@ -1,99 +1,64 @@
-import {coloresCat} from "./hobjs.js";
+import { coloresCat, contarCate, Historial, Ingresos, Gastos } from "./hobjs.js";
+
+let LHistorial = [];
+let VHistorial = {};
+contarCate(Historial.lista, VHistorial, LHistorial);
+/*
+console.log("Lista Hsitorial", LHistorial);
+console.log("Valores Historial", VHistorial);
+console.log("Historial Complto", Historial);
+*/
 
 
-const colorAleatorio = () => {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
 
-    return `rgb(${r}, ${g}, ${b})`;
-};
-const contarCate = (lista, cate, categorias) => {
-    for (let i = 0; i < lista.length; i++){
-        if (lista[i].dataset.categoria in cate){
-            cate[lista[i].dataset.categoria] += 1;
-        }
-        else{
-            cate[lista[i].dataset.categoria] = 1;
-            categorias.push(lista[i].dataset.categoria);
-        }
-    };
-};
+const canvas = document.querySelector(".categorias .grafica");
 
-const realizarGrafico = (canvas) => {
-    const lista = document.querySelectorAll(".listaTotal li");
-    let listCat = [];
-    const categorias = {};
-    const cantLista = lista.length;
+const grafico = new Chart(canvas, {
+    type: "doughnut",
 
-    contarCate(lista, categorias, listCat);
+    data: {
+        labels: LHistorial,
 
-    const ctx = canvas.getContext("2d");
+        datasets: [{
+            label: "Historial",
+            data: Object.values(VHistorial),
+        }]
+    },
 
-    ctx.translate(canvas.width, canvas.height);
-    ctx.scale(-1, -1);
+    options: {
+        responsive: true,
 
-
-    let radActual = 0;
-    let radMod = 0;
-    for (let i = 0; i < listCat.length; i++) {
-        
-        let elem = listCat[i];
-        let porcentaje = categorias[elem]/cantLista;
-        if(elem in categorias){
-            
-            radMod = radActual + Math.PI * 2 * porcentaje;
-            const color = coloresCat[elem.toLowerCase()];/*colorAleatorio();*/
-            // Círculo
-            ctx.beginPath();
-            ctx.moveTo(240, 260);
-            ctx.arc(240, 260, 180, radActual, radMod, false);
-            ctx.closePath();
-            ctx.fillStyle = color;
-            ctx.fill();
-            radActual = radMod;
-
-        }
+        plugins: {
+            legend: {
+                position: "bottom",
+                borderColor: "red",
+                labels: {
+                    useBorderRadius: true,
+                    usePointStyle: true,
+                    pointStyle: "circle",
+                    font: {
+                        size: 18,
+                        family: "Arial",
+                        weight: "bold",
+                        style: "normal"
+                    },
+                    textAligt: "center",
+                    padding: 15,
+                }
+            }
+        },
+        manteinAspectRatio: false,
     }
-    
-
-};
-
-const graficarDona = () => {
-
-    let canva = document.querySelector("#miGrafico");
-    let sectCat = document.querySelector(".categorias");
-    if(canva){
-        
-        canva.remove();
-        canva = document.createElement("canvas");
-        canva.className = "nuevoCanva";
-        canva.id = "miGrafico";
-        canva.width = 500;
-        canva.height = 500;
-        sectCat.appendChild(canva);
-        realizarGrafico(canva);
-    }
-    else{
-        canva = document.createElement("canvas");
-        canva.className = "nuevoCanva";
-        canva.id = "miGrafico";
-        canva.width = 500;
-        canva.height = 500;
-        sectCat.appendChild(canva);
-        realizarGrafico(canva);
-    }
-
-
-
-};
-
-
-
+});
 
 
 export const actualizarGrafica = () => {
-    graficarDona();
+    let LHistorial = [];
+    let VHistorial = {};
+    contarCate(Historial.lista, VHistorial, LHistorial);
+    grafico.data.labels = LHistorial;
+    grafico.data.datasets[0].data = Object.values(VHistorial);
+    grafico.update(); 
 };
 
 

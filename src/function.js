@@ -1,5 +1,5 @@
-import {actualizarGrafica} from "./grafico.js";
-import {Gastos, Ingresos, Historial, ordenarPorFecha} from "./hobjs.js";
+import { actualizarGrafica } from "./grafico.js";
+import { Gastos, Ingresos, Historial, ordenarPorFecha } from "./hobjs.js";
 
 
 const nuevaEtiquetaGasto = (nombre, cantidad, nomCat, fecha) => {
@@ -36,9 +36,9 @@ const nuevaEtiquetaGasto = (nombre, cantidad, nomCat, fecha) => {
         }
 
         gastosTotales();
-        actualizarGrafica();
+
     }
-    
+
 
 
 
@@ -58,7 +58,7 @@ const nuevaEtiquetaIngreso = (nombre, cantidad, nomCat, fecha) => {
                                 <span class="cantElemento">$ ${cantidad}</span>
                             `;
 
-   if (lista) {
+    if (lista) {
 
         const elementos = lista.children;
 
@@ -78,12 +78,12 @@ const nuevaEtiquetaIngreso = (nombre, cantidad, nomCat, fecha) => {
         }
 
         gastosTotales();
-        actualizarGrafica();
+
     }
 };
 
 const listenner = (event) => {
-    switch (event.target.className){
+    switch (event.target.className) {
         case "BGasto":
             overlGasto.showModal();
             break;
@@ -93,16 +93,38 @@ const listenner = (event) => {
     };
 };
 
-const ingresosTotales = ()  =>{
+const ingresosTotales = () => {
     /* segunda version, con el uso de objetos solo necesita elacceso al atributo necesario */
-    Ingresos.lista.forEach(elem => {Ingresos.TPrecio += elem.cantidad});
+    Ingresos.lista.forEach(elem => { Ingresos.TPrecio += elem.cantidad });
     document.querySelector(".DIngresos .cantTotal").textContent = Ingresos.TPrecio; /*cantT;*/
 };
 
-const gastosTotales = ()  =>{
+const gastosTotales = () => {
 
-    Gastos.lista.forEach(elem => {Gastos.TPrecio += elem.cantidad});
+    Gastos.lista.forEach(elem => { Gastos.TPrecio += elem.cantidad });
     document.querySelector(".DGastos .cantTotal").textContent = Gastos.TPrecio;
+};
+
+
+const msnErrorMostrar = (overl) => {
+    const msn = overl.querySelector("p");
+    if (msn) {
+        if (msn.classList.contains("hide")) {
+            msn.classList.toggle("hide");
+            msn.classList.toggle("view");
+        }
+    }
+
+};
+
+const msnErrorCerrar = (overl) => {
+    const msn = overl.querySelector("p");
+    if (msn) {
+        if (msn.classList.contains("view")) {
+            msn.classList.toggle("view");
+            msn.classList.toggle("hide");
+        }
+    }
 };
 
 const menuNuevoIngreso = (overl) => {
@@ -125,29 +147,22 @@ const menuNuevoIngreso = (overl) => {
     };
 
 
-    if(cantidad != "" && !Number.isNaN(cantidad)){
-        nuevaEtiquetaIngreso(nombre, cantidad, nomCat, fecha);
-        Gastos.lista.push(nuevoObjeto);
-        Gastos.TElementos++;
-        ordenarPorFecha(Gastos);        
-        if(msnError){
-            if(msnError.classList.contains("view")){
-                msnError.classList.toggle("view");
-                msnError.classList.toggle("hide");
-            }
-        }
+    if (cantidad != "" && !Number.isNaN(cantidad)) {
+        Ingresos.lista.push(nuevoObjeto);
+        Ingresos.TElementos++;
+        Historial.lista.push(nuevoObjeto);
+        Historial.TELementos++;
+        nuevaEtiquetaGasto(nombre, cantidad, nomCat, fecha);
+        actualizarGrafica();
+        msnErrorCerrar(overl);
         ECantidad.value = "";
         ENombre.value = "";
         overl.close();
     }
-    else{
-        if(msnError){
-            if (msnError.classList.contains("hide")){
-                msnError.classList.toggle("hide");
-                msnError.classList.toggle("view");
-            }
-        }
+    else {
+        msnErrorMostrar(overl);
     }
+
 };
 
 const menuNuevoGasto = (overl) => {
@@ -167,34 +182,27 @@ const menuNuevoGasto = (overl) => {
         categoria: nomCat,
         cantidad: cantidad,
         fecha: fecha,
-    };    
+    };
 
 
 
-    if(cantidad != "" && !Number.isNaN(cantidad)){
+    if (cantidad != "" && !Number.isNaN(cantidad)) {
         Gastos.lista.push(nuevoObjeto);
         Gastos.TElementos++;
-        ordenarPorFecha(Gastos);
+        Historial.lista.push(nuevoObjeto);
+        Historial.TELementos++;
         nuevaEtiquetaGasto(nombre, cantidad, nomCat, fecha);
-        if(msnError){
-            if(msnError.classList.contains("view")){
-                msnError.classList.toggle("view");
-                msnError.classList.toggle("hide");
-            }
-        }
+        actualizarGrafica();
+        msnErrorCerrar(overl);
         ECantidad.value = "";
         ENombre.value = "";
         overl.close();
     }
-    else{
-        if(msnError){
-            if (msnError.classList.contains("hide")){
-                msnError.classList.toggle("hide");
-                msnError.classList.toggle("view");
-            }
-        }
-    } 
+    else {
+        msnErrorMostrar(overl);
+    }
 };
+
 
 const guardarOverl = (overl) => {
     const nombreclase = overl.className;
@@ -211,14 +219,16 @@ const guardarOverl = (overl) => {
 const overlListener = (overl) => {
 
     overl.addEventListener("click", (boton) => {
-        const  nombre = boton.target.className;
+        const nombre = boton.target.className;
         switch (nombre) {
             case "cerrar":
+                msnErrorCerrar(overl);
                 overl.close();
                 break;
             case "guardar":
+                msnErrorCerrar(overl);
                 guardarOverl(overl);
-                break;  
+                break;
         };
     });
 
@@ -228,75 +238,20 @@ const overlListener = (overl) => {
 
 const mostrarHistorial = (historial) => {
 
-    for(let i = historial.lista.length -1; i >= 0; i--){
+    for (let i = historial.lista.length - 1; i >= 0; i--) {
         const object = historial.lista[i];
-        
-        if(object.tipo === "ingreso"){
+
+        if (object.tipo === "ingreso") {
             nuevaEtiquetaIngreso(object.nombre, object.cantidad, object.categoria, object.fecha);
         }
-        else if(object.tipo === "gasto"){
+        else if (object.tipo === "gasto") {
             nuevaEtiquetaGasto(object.nombre, object.cantidad, object.categoria, object.fecha);
         }
     }
-    
+
 };
 
 
-
-
-const mostrarHistorial2 = (historial) => {
-
-    const anios = Object.keys(historial.lista).sort((a, b) => b - a);
-
-    for (const anio of anios) {
-
-        const meses = Object.keys(historial.lista[anio]).sort((a, b) => {
-            const ordenMeses = [
-                "enero", "febrero", "marzo", "abril",
-                "mayo", "junio", "julio", "agosto",
-                "septiembre", "octubre", "noviembre", "diciembre"
-            ];
-
-            return ordenMeses.indexOf(b) - ordenMeses.indexOf(a);
-        });
-
-        for (const mes of meses) {
-
-            const dias = Object.keys(historial.lista[anio][mes])
-                .sort((a, b) => b - a);
-
-            for (const dia of dias) {
-
-                const movimientos = historial.lista[anio][mes][dia];
-
-                // Ordenar los movimientos del mismo día por fecha.
-                movimientos.sort((a, b) =>
-                    b.fecha.localeCompare(a.fecha)
-                );
-
-                for (const object of movimientos) {
-
-                    if (object.tipo === "ingreso") {
-                        nuevaEtiquetaIngreso(
-                            object.nombre,
-                            object.cantidad,
-                            object.categoria,
-                            object.fecha
-                        );
-                    }
-                    else if (object.tipo === "gasto") {
-                        nuevaEtiquetaGasto(
-                            object.nombre,
-                            object.cantidad,
-                            object.categoria,
-                            object.fecha
-                        );
-                    }
-                }
-            }
-        }
-    }
-};
 
 
 const lista = document.querySelector(".listaGastos .opcB");
@@ -304,7 +259,7 @@ const overlIngreso = document.querySelector(".menuIngreso");
 const overlGasto = document.querySelector(".menuGasto");
 
 
-actualizarGrafica();
+//actualizarGrafica();
 gastosTotales();
 ingresosTotales();
 overlListener(overlIngreso);

@@ -17,8 +17,21 @@ body {
 
 
 section {
-    border: 5px solid black;
+    border: 1px solid rgb(94, 82, 82);
+    border-radius: 15px;
 }
+
+.categorias,
+.tiempo,
+.otro {
+    margin: 1%;
+}
+
+canvas {
+    border-radius: 15px;
+}
+
+
 
 /*---------------------------------------------------*/
 .opciones {
@@ -62,7 +75,6 @@ section {
     display: block;
     width: 95%;
     height: 95%;
-    border: 10px solid purple;
 
 }
 
@@ -82,7 +94,20 @@ section {
 
 .tiempo .grafica {
     width: 95%;
-    border: 10px solid blue;
 }
+
+/*---------------------------------------------------*/
+/*---------------------------------------------------*/
+.otro {
+    grid-row: 2/4;
+    grid-column: 3;
+
+}
+
+.otro .grafica {
+    width: 95%;
+    height: 95%;
+}
+
 
 /*---------------------------------------------------*/

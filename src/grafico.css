@@ -1,5 +1,3 @@
-
-
 .categorias .listaCategorias {
     list-style: none;
 }
@@ -7,11 +5,12 @@
 .categorias {
     display: flex;
     flex-direction: column;
+    padding: 5%;
 }
 
 
 
-.categorias .listaCategorias li{
+.categorias .listaCategorias li {
     content: "";
     width: 15px;
     height: 15px;
@@ -19,20 +18,13 @@
     margin-right: 8px;
 }
 
+.categorias,
+.listaGastos,
+.datosTotales {
+    margin: 2%;
+    border-radius: 15px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+canvas {
+    border-radius: 15px;
+}

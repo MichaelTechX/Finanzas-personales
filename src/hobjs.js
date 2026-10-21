@@ -1,5 +1,13 @@
 /*Estructura de objetos de gastose ingresos */
 
+const colorAleatorio = () => {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    return `rgb(${r}, ${g}, ${b})`;
+};
+
 const contarCate = (lista, cate, categorias) => {
     for (let i = 0; i < lista.length; i++) {
         if (lista[i].categoria in cate) {
@@ -346,9 +354,11 @@ const Historial = {
 };
 
 
+
 export {
     ordenarPorFecha,
     contarCate,
+    colorAleatorio,
     Historial,
     Ingresos,
     Gastos,
