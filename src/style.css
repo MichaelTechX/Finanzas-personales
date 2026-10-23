@@ -17,8 +17,18 @@ body {
 
 
 section {
-    border: 5px solid black;
+    border: 2px solid black;
+    border-radius: 15px;
+
 }
+
+.datosTotales,
+.listaGastos,
+.categorias {
+    margin: 1%;
+    border: 2px solid grey;
+}
+
 
 /*---------------------------------------------------*/
 .opciones {
@@ -26,7 +36,6 @@ section {
     grid-column: 1;
     display: flex;
     flex-direction: column;
-
 }
 
 .opciones button {
@@ -35,6 +44,7 @@ section {
     background: none;
     border: 1% solid black;
     border-radius: 10px;
+
 }
 
 /*---------------------------------------------------*/
@@ -143,81 +153,6 @@ section {
 }
 
 /*---------------------------------------------------*/
-/*
-.menuIngreso {
-    width: 40cap;
-    height: 40cap;
-}
-
-.menuIngreso input {
-    width: 99%;
-    height: 10cap;
-}
-
-.menuIngreso button {
-    width: 20cap;
-    height: 10cap;
-}
-
-.menuIngreso .view {
-    border: 1px solid red;
-    background-color: rgb(255, 170, 170);
-    color: red;
-    border-radius: 10px;
-}
-
-.menuIngreso .hide {
-    display: none;
-}
-
-.menuIngreso .catCompras {
-    width: 50%;
-    height: 15%;
-    font-size: larger;
-}
-
-.menuGasto {
-    width: 40cap;
-    height: 50cap;
-}
-
-.menuGasto input {
-    width: 98%;
-    height: 5cap;
-    margin-bottom: 2cap;
-    font-size: 2cap;
-
-}
-
-.menuGasto button {
-    width: 20cap;
-    height: 10cap;
-}
-
-.menuGasto.view {
-    border: 1px solid red;
-    background-color: rgb(255, 170, 170);
-    color: red;
-    border-radius: 10px;
-}
-
-.menuGasto .hide {
-    display: none;
-}
-
-.menuGasto .catCompras {
-    width: 50%;
-    height: 10%;
-    margin-bottom: 2cap;
-    font-size: large;
-}
-*/
-
-
-
-
-
-
 
 dialog {
     width: 40cap;

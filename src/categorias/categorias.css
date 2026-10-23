@@ -17,7 +17,7 @@ body {
 
 
 section {
-    border: 1px solid rgb(94, 82, 82);
+    border: 2px solid black;
     border-radius: 15px;
 }
 
@@ -25,6 +25,7 @@ section {
 .tiempo,
 .otro {
     margin: 1%;
+    border: 2px solid grey;
 }
 
 canvas {
@@ -68,8 +69,6 @@ canvas {
 /*---------------------------------------------------*/
 
 /*---------------------------------------------------*/
-
-.categorias {}
 
 .categorias .grafica {
     display: block;

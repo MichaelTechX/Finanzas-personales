@@ -18,12 +18,7 @@
     margin-right: 8px;
 }
 
-.categorias,
-.listaGastos,
-.datosTotales {
-    margin: 2%;
-    border-radius: 15px;
-}
+
 
 canvas {
     border-radius: 15px;
